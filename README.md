@@ -23,7 +23,7 @@
         3.Comment the origin and fix in commit message "BUG_FIX:{Message}"
 
 ### Features Tracking https://bitbucket.org/powwowdevelopers/powwow-dev/addon/bitbucket-trello-addon/trello-board
-	Note: add urself in this group https://trello.com/invite/powwowdev/7412dbfcfcfe6dd0dfb02637785da35f
+Note: add urself in this group https://trello.com/invite/powwowdev/7412dbfcfcfe6dd0dfb02637785da35f
         1.Any open/to-do features can be assigned 
         2.developer who took the feature need to take responsibility of updating the description/business logic into the wiki if feels needed.
         3.Once took a feature into development make sure to update the trello ticket to doing status
