@@ -1,0 +1,50 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "contacts"
+        },
+        {
+            "relationshipName": "contact",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "contacts"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "created_on",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "ContactStatus",
+            "fieldValues": "REQUEST_SENT,ACCEPT_REQUEST,FRIEND",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20171111132543",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "contacts",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

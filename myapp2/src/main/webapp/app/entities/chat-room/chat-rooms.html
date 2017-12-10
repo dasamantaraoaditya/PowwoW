@@ -1,0 +1,72 @@
+<div>
+    <h2>Chat Rooms</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="chat-room.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Chat Room
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.reset()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="message"><span>Message</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sent_on"><span>Sent On</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="is_visible_to_sender"><span>Is Visible To Sender</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="is_visible_to_reciver"><span>Is Visible To Reciver</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="is_read"><span>Is Read</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sent_from.login"><span>Sent From</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sent_to.login"><span>Sent To</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
+                <tr ng-repeat="chatRoom in vm.chatRooms track by chatRoom.id">
+                    <td><a ui-sref="chat-room-detail({id:chatRoom.id})">{{chatRoom.id}}</a></td>
+                    <td>{{chatRoom.message}}</td>
+                    <td>{{chatRoom.sent_on | date:'medium'}}</td>
+                    <td>{{chatRoom.is_visible_to_sender}}</td>
+                    <td>{{chatRoom.is_visible_to_reciver}}</td>
+                    <td>{{chatRoom.is_read}}</td>
+                    <td>
+                        {{chatRoom.sent_from.login}}
+                    </td>
+                    <td>
+                        {{chatRoom.sent_to.login}}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="chat-room-detail({id:chatRoom.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="chat-room.edit({id:chatRoom.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="chat-room.delete({id:chatRoom.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

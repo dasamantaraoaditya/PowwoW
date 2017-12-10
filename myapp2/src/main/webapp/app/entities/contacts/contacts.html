@@ -1,0 +1,66 @@
+<div>
+    <h2>Contacts</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="contacts.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Contacts
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Created On</span></th>
+                    <th><span>Status</span></th>
+                    <th><span>User</span></th>
+                    <th><span>Contact</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="contacts in vm.contacts track by contacts.id">
+                    <td><a ui-sref="contacts-detail({id:contacts.id})">{{contacts.id}}</a></td>
+                    <td>{{contacts.created_on | date:'medium'}}</td>
+                    <td>{{contacts.status}}</td>
+                    <td>
+                        {{contacts.user.login}}
+                    </td>
+                    <td>
+                        {{contacts.contact.login}}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="contacts-detail({id:contacts.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="contacts.edit({id:contacts.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="contacts.delete({id:contacts.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

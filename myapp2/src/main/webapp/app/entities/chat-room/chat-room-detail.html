@@ -1,0 +1,47 @@
+
+<div>
+    <h2><span>Chat Room</span> {{vm.chatRoom.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Message</span></dt>
+        <dd>
+            <span>{{vm.chatRoom.message}}</span>
+        </dd>
+        <dt><span>Sent On</span></dt>
+        <dd>
+            <span>{{vm.chatRoom.sent_on | date:'medium'}}</span>
+        </dd>
+        <dt><span>Is Visible To Sender</span></dt>
+        <dd>
+            <span>{{vm.chatRoom.is_visible_to_sender}}</span>
+        </dd>
+        <dt><span>Is Visible To Reciver</span></dt>
+        <dd>
+            <span>{{vm.chatRoom.is_visible_to_reciver}}</span>
+        </dd>
+        <dt><span>Is Read</span></dt>
+        <dd>
+            <span>{{vm.chatRoom.is_read}}</span>
+        </dd>
+        <dt><span>Sent From</span></dt>
+        <dd>
+            {{vm.chatRoom.sent_from.login}}
+        </dd>
+        <dt><span>Sent To</span></dt>
+        <dd>
+            {{vm.chatRoom.sent_to.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="chat-room-detail.edit({id:vm.chatRoom.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

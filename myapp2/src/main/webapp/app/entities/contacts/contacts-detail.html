@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span>Contacts</span> {{vm.contacts.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Created On</span></dt>
+        <dd>
+            <span>{{vm.contacts.created_on | date:'medium'}}</span>
+        </dd>
+        <dt><span>Status</span></dt>
+        <dd>
+            <span>{{vm.contacts.status}}</span>
+        </dd>
+        <dt><span>User</span></dt>
+        <dd>
+            {{vm.contacts.user.login}}
+        </dd>
+        <dt><span>Contact</span></dt>
+        <dd>
+            {{vm.contacts.contact.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="contacts-detail.edit({id:vm.contacts.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

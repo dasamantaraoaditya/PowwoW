@@ -1,0 +1,82 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myContactsLabel">Create or edit a Contacts</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.contacts.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.contacts.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_created_on">Created On</label>
+                <div class="input-group">
+                    <input id="field_created_on" type="text" class="form-control" name="created_on" datetime-picker="{{dateformat}}" ng-model="vm.contacts.created_on" is-open="vm.datePickerOpenStatus.created_on"
+                    required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('created_on')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.created_on.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.created_on.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.created_on.$error.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_status">Status</label>
+            <select class="form-control" name="status" ng-model="vm.contacts.status" id="field_status" required>
+                <option value="REQUEST_SENT">REQUEST_SENT</option>
+                <option value="ACCEPT_REQUEST">ACCEPT_REQUEST</option>
+                <option value="FRIEND">FRIEND</option>
+            </select>
+            <div ng-show="editForm.status.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.status.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" ng-model="vm.contacts.user" ng-options="user as user.login for user in vm.users track by user.id" required>
+            </select>
+        </div>
+        <div ng-show="editForm.user.$invalid">
+            <p class="help-block"
+                ng-show="editForm.user.$error.required">
+                This field is required.
+            </p>
+        </div>
+        <div class="form-group">
+            <label for="field_contact">Contact</label>
+            <select class="form-control" id="field_contact" name="contact" ng-model="vm.contacts.contact" ng-options="user as user.login for user in vm.users track by user.id" required>
+            </select>
+        </div>
+        <div ng-show="editForm.contact.$invalid">
+            <p class="help-block"
+                ng-show="editForm.contact.$error.required">
+                This field is required.
+            </p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>
