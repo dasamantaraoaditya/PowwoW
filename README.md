@@ -12,16 +12,16 @@
 		d.git push origin BEANCH_Name (pushing the changes to the remote repo mostly 'master')
         
 # Tracking On Powwow
-    ### Documentation: https://bitbucket.org/powwowdevelopers/powwow-dev/wiki/
+   ### Documentation: https://bitbucket.org/powwowdevelopers/powwow-dev/wiki/
         1.New documentation changes need to commited with commit message DOC-CHANGE
         2.Feel free to correct any existing change if wrong (*discuss before change)
         3.New Wiki Page need to have the business logic independently.
         
-    ### Issues tracking https://bitbucket.org/powwowdevelopers/powwow-dev/issues?status=new&status=open
+   ### Issues tracking https://bitbucket.org/powwowdevelopers/powwow-dev/issues?status=new&status=open
         1.Only an existing feature misbehavior can be tracked as a bug/issue
         2.Assign any active bugs (*High Priority)
         3.Comment the origin and fix in commit message "BUG_FIX:{Message}"
-    ### Features Tracking https://bitbucket.org/powwowdevelopers/powwow-dev/addon/bitbucket-trello-addon/trello-board
+   ### Features Tracking https://bitbucket.org/powwowdevelopers/powwow-dev/addon/bitbucket-trello-addon/trello-board
         1.Any open/to-do features can be assigned 
         2.developer who took the feature need to take responsibility of updating the description/business logic into the wiki if feels needed.
         3.Once took a feature into development make sure to update the trello ticket to doing status
