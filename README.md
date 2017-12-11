@@ -1,6 +1,6 @@
 # To Work On Powwow
 	1.clone the git repository into ur local machine
-		git clone https://AdityaDasamantharao@bitbucket.org/powwowdevelopers/powwow-dev.git powwow
+		git clone https://YOUR_USER_NAME@bitbucket.org/powwowdevelopers/powwow-dev.git
 	2.Open the myapp2 folder into ur working IDE (Recommended Spring STS ide/ eclipse)
         a.import the myapp2 folder as a maven project
         b.update the maven project dependencies
