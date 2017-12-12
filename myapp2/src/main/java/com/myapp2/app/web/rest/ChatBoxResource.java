@@ -38,7 +38,7 @@ import io.github.jhipster.web.util.ResponseUtil;
 import io.swagger.annotations.ApiParam;
 
 /**
- * REST controller for managing ChatRoom.
+ * REST controller for managing ChatBox.
  */
 @RestController
 @RequestMapping("/api")

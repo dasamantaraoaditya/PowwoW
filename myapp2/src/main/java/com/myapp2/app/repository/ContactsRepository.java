@@ -4,6 +4,8 @@ import com.myapp2.app.domain.Contacts;
 import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;
+import org.springframework.data.repository.query.Param;
+
 import java.util.List;
 
 /**
@@ -22,5 +24,8 @@ public interface ContactsRepository extends JpaRepository<Contacts, Long> {
 
     @Query("select contacts from Contacts contacts where contacts.contact.login = ?#{principal.username}")
     List<Contacts> findByContactIsCurrentUser();
+
+    @Query("select contacts from Contacts contacts where contacts.user.login = ?#{principal.username} and CONCAT(contacts.contact.firstName ,' ', contacts.contact.lastName) LIKE (:searchtext))")
+	List<Contacts> findByUserIsCurrentUserAndNameLike(@Param("searchtext") String searchtext);
 
 }

@@ -1,0 +1,45 @@
+<div>
+	<jhi-alert></jhi-alert>
+	<div class="row">
+		<div class="col s6">
+			<div class="search-friends">
+				<input type="text"
+					ng-change="searchAllContactsAndUsers(friendsSearch)"
+					ng-model="friendsSearch" placeholder="Search Friends">
+			</div>
+		</div>
+		<div class="col s6">
+			<button ng-click="getMyFriends();friendsSearch = ''"
+				class="my-friends right waves-effect waves-light btn">
+				<i class="material-icons left">people_outline</i>Show My Friends
+			</button>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s3" ng-repeat="friendContact in vm.contacts">
+			<div class="card horizontal">
+				<div class="card-image">
+					<i class="material-icons large">account_circle</i>
+				</div>
+				<div class="card-content">
+					<b class="name-on-card">{{friendContact.contact.firstName +' '+
+						friendContact.contact.lastName}}</b>
+					<div class="user-info" style="">
+						<div ng-if="friendContact.status == 'REQUEST_SENT'">
+							<button ng-click="cancelFriendRequest(friendContact)">Cancel Friend Request</button>
+						</div>
+						<div ng-if="friendContact.status === 'ACCEPT_REQUEST'">
+							<button ng-click="acceptFriendRequest(friendContact)">Accept Friend Request</button>
+							<button ng-click="rejectFriendRequest(friendContact)">Reject Friend Request</button>
+						</div>
+						<div ng-if="friendContact.status === 'FRIEND'">
+							<button ng-click="unFriend(friendContact)">UnFriend</button>
+						</div>
+						<div ng-if="!friendContact.status">
+							<button ng-click="sendFriendRequest(friendContact)">Send Friend Request</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
