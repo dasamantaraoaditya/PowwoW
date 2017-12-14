@@ -147,8 +147,6 @@ public class FriendsResource {
 	 * @return the ResponseEntity with status 201 (Created) and with body the new
 	 *         contacts, or with status 400 (Bad Request) if the contacts has
 	 *         already an ID
-	 * @throws URISyntaxException
-	 *             if the Location URI syntax is incorrect
 	 */
 	@GetMapping("/friends/acceptRequest/{id}")
 	@Timed
