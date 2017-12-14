@@ -34,7 +34,7 @@
             'sendFriendRequest':{
             	method: 'POST',
             	isArray: false,
-            	url: 'api/friends/addFriend/:id'
+            	url: 'api/friends/addFriend'
             },
             'cancelFriendRequest':{
             	method: 'DELETE',
@@ -42,14 +42,9 @@
             	url: 'api/friends/cancelRequest/:id'
             },
             'acceptFriendRequest':{
-            	method: 'POST',
+            	method: 'GET',
             	isArray: false,
             	url: 'api/friends/acceptRequest/:id'
-            },
-            'unFriend':{
-            	method: 'DELETE',
-            	isArray: false,
-            	url: 'api/friends/unFriend/:id'
             }
         });
     }

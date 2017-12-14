@@ -8,7 +8,7 @@
 	angular.module('myapp2App').controller('ChatBoxController',
 			ChatBoxController);
 
-	ChatBoxController.$inject = [ 'ChatBox', '$scope', 'ChatRoom', 'Principal'];
+	ChatBoxController.$inject = [ 'ChatBox', '$scope', 'ChatRoom', 'Principal' ];
 
 	function ChatBoxController(ChatBox, $scope, ChatRoom, Principal) {
 
@@ -18,13 +18,12 @@
 		vm.messages = [];
 		getAccount();
 
-        function getAccount() {
-            Principal.identity().then(function(account) {
-                vm.account = account;
-                vm.isAuthenticated = Principal.isAuthenticated;
-            });
-        }
-
+		function getAccount() {
+			Principal.identity().then(function(account) {
+				vm.account = account;
+				vm.isAuthenticated = Principal.isAuthenticated;
+			});
+		}
 
 		loadAll();
 
@@ -45,20 +44,25 @@
 			});
 		};
 		$scope.sendMessage = function(messageToBeSent) {
-			ChatBox.sendMessage({
-				id : null,
-				is_read : false,
-				is_visible_to_reciver : true,
-				is_visible_to_sender : true,
-				message : messageToBeSent,
-				sent_from : {
-					id : vm.account.id
-				},
-				sent_on : new Date(),
-				sent_to : {
-					id: vm.contactId
-				}
-			});
+			if (messageToBeSent) {
+				var messageData = {
+					id : null,
+					is_read : false,
+					is_visible_to_reciver : true,
+					is_visible_to_sender : true,
+					message : messageToBeSent,
+					sent_from : {
+						id : vm.account.id
+					},
+					sent_on : new Date(),
+					sent_to : {
+						id : vm.contactId
+					}
+				};
+				ChatBox.sendMessage(messageData, function(result) {
+					vm.messages.push(messageData);
+				});
+			}
 		};
 	}
 })();

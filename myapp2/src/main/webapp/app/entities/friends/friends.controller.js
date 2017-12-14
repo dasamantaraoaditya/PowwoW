@@ -39,37 +39,30 @@
 				vm.contacts = [];
 			}
 		};
-		
-		$scope.sendFriendRequest = function(friendContact){
-			Friends.sendFriendRequest({
-				id : friendContact.contact.id
-			}, function(result) {
-				friendContact.status='REQUEST_SENT';
+
+		$scope.sendFriendRequest = function(friendContact) {
+			friendContact.status = 'REQUEST_SENT';
+			friendContact.created_on = new Date();
+			Friends.sendFriendRequest(friendContact, function(result) {
+				friendContact = result;
 			});
 		};
-		
-		$scope.cancelFriendRequest = function(friendContact){
+
+		$scope.cancelFriendRequest = function(friendContact) {
 			Friends.cancelFriendRequest({
 				id : friendContact.contact.id
 			}, function(result) {
-				friendContact.status='';
+				friendContact.status = '';
 			});
 		};
-		
-		$scope.acceptFriendRequest = function(friendContact){
+
+		$scope.acceptFriendRequest = function(friendContact) {
 			Friends.acceptFriendRequest({
 				id : friendContact.contact.id
 			}, function(result) {
-				friendContact.status='FRIEND';
+				friendContact.status = 'FRIEND';
 			});
 		};
-		
-		$scope.unFriend = function(friendContact){
-			Friends.unFriend({
-				id : friendContact.contact.id
-			}, function(result) {
-				friendContact.status='';
-			});
-		};
+
 	}
 })();

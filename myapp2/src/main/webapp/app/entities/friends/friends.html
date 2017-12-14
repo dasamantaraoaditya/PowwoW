@@ -30,10 +30,10 @@
 						</div>
 						<div ng-if="friendContact.status === 'ACCEPT_REQUEST'">
 							<button ng-click="acceptFriendRequest(friendContact)">Accept Friend Request</button>
-							<button ng-click="rejectFriendRequest(friendContact)">Reject Friend Request</button>
+							<button ng-click="cancelFriendRequest(friendContact)">Reject Friend Request</button>
 						</div>
 						<div ng-if="friendContact.status === 'FRIEND'">
-							<button ng-click="unFriend(friendContact)">UnFriend</button>
+							<button ng-click="cancelFriendRequest(friendContact)">UnFriend</button>
 						</div>
 						<div ng-if="!friendContact.status">
 							<button ng-click="sendFriendRequest(friendContact)">Send Friend Request</button>
