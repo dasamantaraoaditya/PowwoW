@@ -10,7 +10,14 @@
 		b.git add FILE_NAME (can add the files into the stagin instance)
 		c.git commit COMMIT_MESSAGE (commiting changes to remote repo)
 		d.git push origin BEANCH_Name (pushing the changes to the remote repo mostly 'master')
-        
+
+# Set-up
+    1.spring tool suit IDE https://spring.io/tools/sts/all
+    2.Mysql (mysql workbench as ide) https://downloads.mysql.com/archives/workbench/
+     a.set the connection to 3306 port 
+     b.username -> root, password -> 1234 
+    3.git https://git-scm.com/download
+    
 # Tracking On Powwow
 ### Documentation: https://bitbucket.org/powwowdevelopers/powwow-dev/wiki/
         1.New documentation changes need to commited with commit message DOC-CHANGE
