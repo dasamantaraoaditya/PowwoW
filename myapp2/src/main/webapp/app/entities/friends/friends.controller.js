@@ -41,10 +41,10 @@
 		};
 
 		$scope.sendFriendRequest = function(friendContact) {
-			friendContact.status = 'REQUEST_SENT';
-			friendContact.created_on = new Date();
-			Friends.sendFriendRequest(friendContact, function(result) {
-				friendContact = result;
+			Friends.sendFriendRequest({
+				id : friendContact.contact.id
+			}, function(result) {
+				friendContact.status = 'REQUEST_SENT';
 			});
 		};
 
@@ -64,5 +64,12 @@
 			});
 		};
 
+		$scope.unFriend = function(friendContact) {
+			Friends.unFriend({
+				id : friendContact.contact.id
+			}, function(result) {
+				friendContact.status = '';
+			});
+		};
 	}
 })();

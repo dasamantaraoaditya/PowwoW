@@ -26,17 +26,22 @@
 						friendContact.contact.lastName}}</b>
 					<div class="user-info" style="">
 						<div ng-if="friendContact.status == 'REQUEST_SENT'">
-							<button ng-click="cancelFriendRequest(friendContact)">Cancel Friend Request</button>
+							<button ng-click="cancelFriendRequest(friendContact)">Cancel
+								Friend Request</button>
 						</div>
 						<div ng-if="friendContact.status === 'ACCEPT_REQUEST'">
-							<button ng-click="acceptFriendRequest(friendContact)">Accept Friend Request</button>
-							<button ng-click="cancelFriendRequest(friendContact)">Reject Friend Request</button>
+							<button ng-click="acceptFriendRequest(friendContact)">Accept
+								Friend Request</button>
+							<button ng-click="cancelFriendRequest(friendContact)">Reject
+								Friend Request</button>
 						</div>
 						<div ng-if="friendContact.status === 'FRIEND'">
 							<button ng-click="cancelFriendRequest(friendContact)">UnFriend</button>
 						</div>
 						<div ng-if="!friendContact.status">
-							<button ng-click="sendFriendRequest(friendContact)">Send Friend Request</button>
+							<button ng-click="sendFriendRequest(friendContact)">Send
+								Friend Request</button>
+
 						</div>
 					</div>
 				</div>

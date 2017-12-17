@@ -21,16 +21,22 @@
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="manifest" href="manifest.webapp" />
 
-<!-- Materialize css cdn -->
+<!-- bootstrap 4 -->
+<!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
-<!-- MaterializeCss Icons -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
-<!-- MaterializeCSS Js Import -need to remove -->
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
 
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 
 <!-- FontAwesome icons -->
 <link rel="stylesheet"
@@ -124,19 +130,22 @@
 	<script src="app/layouts/error/error.state.js"></script>
 	<script src="app/home/home.state.js"></script>
 	<script src="app/home/home.controller.js"></script>
+	<script src="app/entities/friends/friends-dialog.controller.js"></script>
 	<script src="app/entities/friends/friends.state.js"></script>
 	<script src="app/entities/friends/friends.service.js"></script>
 	<script src="app/entities/friends/friends.controller.js"></script>
 	<script src="app/entities/entity.state.js"></script>
 	<script src="app/entities/contacts/contacts-dialog.controller.js"></script>
 	<script src="app/entities/contacts/contacts-detail.controller.js"></script>
-	<script src="app/entities/contacts/contacts-delete-dialog.controller.js"></script>
+	<script
+		src="app/entities/contacts/contacts-delete-dialog.controller.js"></script>
 	<script src="app/entities/contacts/contacts.state.js"></script>
 	<script src="app/entities/contacts/contacts.service.js"></script>
 	<script src="app/entities/contacts/contacts.controller.js"></script>
 	<script src="app/entities/chat-room/chat-room-dialog.controller.js"></script>
 	<script src="app/entities/chat-room/chat-room-detail.controller.js"></script>
-	<script src="app/entities/chat-room/chat-room-delete-dialog.controller.js"></script>
+	<script
+		src="app/entities/chat-room/chat-room-delete-dialog.controller.js"></script>
 	<script src="app/entities/chat-room/chat-room.state.js"></script>
 	<script src="app/entities/chat-room/chat-room.service.js"></script>
 	<script src="app/entities/chat-room/chat-room.controller.js"></script>
@@ -177,9 +186,12 @@
 	<script src="app/blocks/config/alert.config.js"></script>
 	<script src="app/app.state.js"></script>
 	<script src="app/app.constants.js"></script>
-	<script src="app/admin/user-management/user-management-dialog.controller.js"></script>
-	<script src="app/admin/user-management/user-management-detail.controller.js"></script>
-	<script src="app/admin/user-management/user-management-delete-dialog.controller.js"></script>
+	<script
+		src="app/admin/user-management/user-management-dialog.controller.js"></script>
+	<script
+		src="app/admin/user-management/user-management-detail.controller.js"></script>
+	<script
+		src="app/admin/user-management/user-management-delete-dialog.controller.js"></script>
 	<script src="app/admin/user-management/user-management.state.js"></script>
 	<script src="app/admin/user-management/user-management.controller.js"></script>
 	<script src="app/admin/metrics/metrics.state.js"></script>
