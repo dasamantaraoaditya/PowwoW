@@ -1,11 +1,12 @@
 <div>
 	<jhi-alert></jhi-alert>
 	<div class="row">
-		<div class="col s6">
-			<div class="search-friends">
-				<input type="text"
+		<div class="col s6 search-friends">
+			<div class="input-group">
+				<input type="text" class="form-control" id="basic-url"
+					aria-describedby="basic-addon3"
 					ng-change="searchAllContactsAndUsers(friendsSearch)"
-					ng-model="friendsSearch" placeholder="Search Friends">
+					ng-model="friendsSearch" placeholder="Search People...">
 			</div>
 		</div>
 		<div class="col s6">
@@ -15,36 +16,64 @@
 			</button>
 		</div>
 	</div>
+	<hr>
 	<div class="row">
-		<div class="col s3" ng-repeat="friendContact in vm.contacts">
-			<div class="card horizontal">
-				<div class="card-image">
-					<i class="material-icons large">account_circle</i>
-				</div>
-				<div class="card-content">
-					<b class="name-on-card">{{friendContact.contact.firstName +' '+
-						friendContact.contact.lastName}}</b>
-					<div class="user-info" style="">
-						<div ng-if="friendContact.status == 'REQUEST_SENT'">
-							<button ng-click="cancelFriendRequest(friendContact)">Cancel
-								Friend Request</button>
+		<div class="col-sm-3" ng-repeat="friendContact in vm.contacts">
+			<div class="card user-card-{{friendContact.contact.id}}"
+				onmouseenter="showUserCardItems(this)"
+				onmouseleave="hideUserCardItems(this)">
+				<div class="card-title">
+					<div class="row">
+						<div class="col-sm-6 text-center">
+							<img class="rounded-circle float-left img-fluid"
+								src="content/images/hipster.png"
+								alt="content/images/hipster.png"
+								style="width: 80px; padding-left: 20px">
 						</div>
-						<div ng-if="friendContact.status === 'ACCEPT_REQUEST'">
-							<button ng-click="acceptFriendRequest(friendContact)">Accept
-								Friend Request</button>
-							<button ng-click="cancelFriendRequest(friendContact)">Reject
-								Friend Request</button>
-						</div>
-						<div ng-if="friendContact.status === 'FRIEND'">
-							<button ng-click="cancelFriendRequest(friendContact)">UnFriend</button>
-						</div>
-						<div ng-if="!friendContact.status">
-							<button ng-click="sendFriendRequest(friendContact)">Send
-								Friend Request</button>
-
+						<div class="col-sm-6 text-center align-middle">
+							<h3 style="top: 33%; position: relative">{{friendContact.contact.firstName
+								+' '+ friendContact.contact.lastName | limitTo: 15
+								}}{{(friendContact.contact.firstName +
+								friendContact.contact.lastName).length > 15 ? '...' : ''}}</h3>
 						</div>
 					</div>
 				</div>
+				<div class="card-content text-center align-middle"
+					style="height: 90px; display: none; padding: 5px">
+					<div ng-if="friendContact.status == 'REQUEST_SENT'">
+						<button ng-click="cancelFriendRequest(friendContact)"
+							class="btn btn-outline-warning">Cancel Friend Request</button>
+						<br>
+						<button ng-click="viewProfileDialogue(friendContact)"
+							class="btn btn-outline-info">View Pofile</button>
+					</div>
+					<div ng-if="friendContact.status === 'ACCEPT_REQUEST'">
+						<button ng-click="acceptFriendRequest(friendContact)"
+							class="btn btn-outline-success">Accept Friend Request</button>
+						<br>
+						<button ng-click="cancelFriendRequest(friendContact)"
+							class="btn btn-outline-warning">Reject Friend Request</button>
+						<br>
+						<button ng-click="viewProfileDialogue(friendContact)"
+							class="btn btn-outline-info">View Pofile</button>
+					</div>
+					<div ng-if="friendContact.status === 'FRIEND'">
+						<button ng-click="cancelFriendRequest(friendContact)"
+							class="btn btn-outline-danger">UnFriend</button>
+						<br>
+						<button ng-click="viewProfileDialogue(friendContact)"
+							class="btn btn-outline-info">View Pofile</button>
+					</div>
+					<div ng-if="!friendContact.status">
+						<button ng-click="sendFriendRequest(friendContact)"
+							class="btn btn-outline-primary">Send Friend Request</button>
+						<br>
+						<button ng-click="viewProfileDialogue(friendContact)"
+							class="btn btn-outline-info">View Pofile</button>
+					</div>
+				</div>
+
 			</div>
 		</div>
 	</div>
+</div>

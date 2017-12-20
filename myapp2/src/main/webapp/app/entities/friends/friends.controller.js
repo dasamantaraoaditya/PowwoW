@@ -41,10 +41,10 @@
 		};
 
 		$scope.sendFriendRequest = function(friendContact) {
-			Friends.sendFriendRequest({
-				id : friendContact.contact.id
-			}, function(result) {
-				friendContact.status = 'REQUEST_SENT';
+			friendContact.status = 'REQUEST_SENT';
+			friendContact.created_on = new Date();
+			Friends.sendFriendRequest(friendContact, function(result) {
+				friendContact = result;
 			});
 		};
 
@@ -71,5 +71,20 @@
 				friendContact.status = '';
 			});
 		};
+
 	}
 })();
+
+function showUserCardItems(item) {
+	$("." + item.className.split(' ').join('.') + " div.card-content").show(
+			"slow")
+	$("." + item.className.split(' ').join('.') + " div.card-title").hide(
+			"slow")
+}
+
+function hideUserCardItems(item) {
+	$("." + item.className.split(' ').join('.') + " div.card-content").hide(
+			"slow")
+	$("." + item.className.split(' ').join('.') + " div.card-title").show(
+			"slow")
+}
