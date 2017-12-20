@@ -36,14 +36,14 @@
 					</div>
 				</li>
 			</ul>
-			<div class="row">
+			<div class="row" ng-show="vm.messages.length">
 				<div class="col s9">
-					<input placeholder="send message" ng-model="messageToBeSent"
+					<input placeholder="send message" ng-model="vm.messageToBeSent"
 						class="form-control ng-pristine ng-valid ng-not-empty ng-valid-required"
-						length="20">
+						ng-keypress="sendMessage($event)" length="20">
 				</div>
 				<div class="col s3">
-					<button ng-click="sendMessage(messageToBeSent)" class="btn">
+					<button ng-click="sendMessage($event)" class="btn">
 						Send <i class="material-icons">send</i>
 					</button>
 				</div>

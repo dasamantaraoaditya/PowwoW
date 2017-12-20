@@ -43,14 +43,14 @@
 				vm.contactId = contactId;
 			});
 		};
-		$scope.sendMessage = function(messageToBeSent) {
-			if (messageToBeSent) {
+		$scope.sendMessage = function(event) {
+			if (vm.messageToBeSent && (event.which === 13 || event.which === 1)) {
 				var messageData = {
 					id : null,
 					is_read : false,
 					is_visible_to_reciver : true,
 					is_visible_to_sender : true,
-					message : messageToBeSent,
+					message : vm.messageToBeSent,
 					sent_from : {
 						id : vm.account.id
 					},
@@ -59,6 +59,7 @@
 						id : vm.contactId
 					}
 				};
+				vm.messageToBeSent = '';
 				ChatBox.sendMessage(messageData, function(result) {
 					vm.messages.push(messageData);
 				});
