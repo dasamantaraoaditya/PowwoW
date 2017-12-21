@@ -5,6 +5,7 @@ package com.myapp2.app.web.rest;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -79,6 +80,8 @@ public class FriendsResource {
 		String aSearchText = searchtext + "%";
 		List<Contacts> contacts = contactsRepository.findByUserIsCurrentUserAndNameLike(aSearchText);
 		List<User> users = usersRepository.findByFirstNameOrLastName(aSearchText);
+		
+		
 		List<User> uniqueUsers = users
 				.stream().filter(user -> (contacts.stream()
 						.filter(contact -> contact.getContact().getId().equals(user.getId())).count()) < 1)
@@ -86,9 +89,12 @@ public class FriendsResource {
 		User currentUser = usersRepository.findByCurrentLoggedIn();
 		for (User user : uniqueUsers) {
 			Contacts c = new Contacts();
-			c.setContact(user);
-			c.setUser(currentUser);
-			contacts.add(c);
+			if(!user.equals(currentUser)) 
+			{
+				c.setContact(user);
+				c.setUser(currentUser);
+				contacts.add(c);
+			}			
 		}
 		return contacts;
 	}
