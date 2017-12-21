@@ -5,7 +5,6 @@ package com.myapp2.app.web.rest;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -79,9 +77,7 @@ public class FriendsResource {
 		log.debug("REST request to get a all contacts in search " + searchtext);
 		String aSearchText = searchtext + "%";
 		List<Contacts> contacts = contactsRepository.findByUserIsCurrentUserAndNameLike(aSearchText);
-		List<User> users = usersRepository.findByFirstNameOrLastName(aSearchText);
-		
-		
+		List<User> users = usersRepository.findByFirstNameOrLastName(aSearchText);		
 		List<User> uniqueUsers = users
 				.stream().filter(user -> (contacts.stream()
 						.filter(contact -> contact.getContact().getId().equals(user.getId())).count()) < 1)
