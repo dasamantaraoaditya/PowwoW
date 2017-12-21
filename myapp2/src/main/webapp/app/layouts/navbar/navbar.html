@@ -16,7 +16,7 @@
 			</div>
 			<div class="navbar-collapse" uib-collapse="vm.isNavbarCollapsed"
 				ng-switch="vm.isAuthenticated()">
-				<ul class="nav navbar-nav navbar-right">
+				<ul class="nav navbar-nav navbar-right" style="display:inline">
 					<li ui-sref-active="active"><a ui-sref="home"
 						ng-click="vm.collapseNavbar()"> <span
 							class="glyphicon glyphicon-home"></span> <span class="hidden-sm">Home</span>
@@ -56,19 +56,19 @@
 						class="dropdown pointer"><a class="dropdown-toggle"
 						uib-dropdown-toggle href="" id="account-menu"> <span> <span
 								class="glyphicon glyphicon-user"></span> <span class="hidden-sm">
-									Account </span> <b class="caret"></b>
+									Account </span> 
 						</span>
 					</a>
-						<ul class="dropdown-menu" uib-dropdown-menu>
-							<li ui-sref-active="active"><a
+						<ul uib-dropdown-menu>
+							<li ui-sref-active="active"><a class="dropdown-item"
 								ui-sref="settings" ng-click="vm.collapseNavbar()"> <span
 									class="glyphicon glyphicon-wrench"></span>&nbsp; <span>Settings</span>
 							</a></li>
-							<li ui-sref-active="active"><a
+							<li ui-sref-active="active"><a class="dropdown-item"
 								ui-sref="password" ng-click="vm.collapseNavbar()"> <span
 									class="glyphicon glyphicon-lock"></span>&nbsp; <span>Password</span>
 							</a></li>
-							<li ui-sref-active="active"><a href=""
+							<li ui-sref-active="active"><a class="dropdown-item" href=""
 								ng-click="vm.logout()" id="logout"> <span
 									class="glyphicon glyphicon-log-out"></span>&nbsp; <span>Sign
 										out</span>
@@ -121,13 +121,13 @@
 		</div>
 	</div>
 	<div class="container nav-content" ng-switch="vm.isAuthenticated()">
-		<ul class="tabs tabs-transparent" uib-dropdown-menu
+		<ul class="nav nav-tabs"
 			ng-switch-when="true">
-			<li class="tab" ui-sref-active="active"><a ui-sref="chatbox"
+			<li class="nav-item active" ui-sref-active="active"><a ui-sref="chatbox"
 				ng-click="vm.collapseNavbar()"><span><i
 						class="fa fa-address-card" aria-hidden="true"></i> ChatBox</span> </a></li>
 			
-			<li class="tab" ui-sref-active="active"><a ui-sref="friends"
+			<li class="nav-item" ui-sref-active="active"><a ui-sref="friends"
 				ng-click="vm.collapseNavbar()"><span><i
 						class="fa fa-address-card" aria-hidden="true"></i> Friends</span> </a></li>
 			
