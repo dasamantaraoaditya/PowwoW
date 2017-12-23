@@ -77,20 +77,18 @@ public class FriendsResource {
 		log.debug("REST request to get a all contacts in search " + searchtext);
 		String aSearchText = searchtext + "%";
 		List<Contacts> contacts = contactsRepository.findByUserIsCurrentUserAndNameLike(aSearchText);
-		List<User> users = usersRepository.findByFirstNameOrLastName(aSearchText);		
+		User currentUser = usersRepository.findByCurrentLoggedIn();
+		List<User> users = usersRepository.findByFirstNameOrLastName(aSearchText);
+		users.remove(currentUser);
 		List<User> uniqueUsers = users
 				.stream().filter(user -> (contacts.stream()
 						.filter(contact -> contact.getContact().getId().equals(user.getId())).count()) < 1)
 				.collect(Collectors.toList());
-		User currentUser = usersRepository.findByCurrentLoggedIn();
 		for (User user : uniqueUsers) {
 			Contacts c = new Contacts();
-			if(!user.equals(currentUser)) 
-			{
-				c.setContact(user);
-				c.setUser(currentUser);
-				contacts.add(c);
-			}			
+			c.setContact(user);
+			c.setUser(currentUser);
+			contacts.add(c);
 		}
 		return contacts;
 	}
