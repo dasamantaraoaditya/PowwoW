@@ -16,8 +16,9 @@
 		vm.chatBox = [];
 		vm.chatRoom = [];
 		vm.messages = [];
+		$scope.showTextArea = false;
 		getAccount();
-
+		
 		function getAccount() {
 			Principal.identity().then(function(account) {
 				vm.account = account;
@@ -35,6 +36,7 @@
 		}
 
 		$scope.getMessages = function(contactId) {
+			$scope.showTextArea = true;
 			ChatBox.get({
 				id : contactId
 			}, function(result) {

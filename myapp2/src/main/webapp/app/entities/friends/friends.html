@@ -11,14 +11,14 @@
 		</div>
 		<div class="col s6">
 			<button ng-click="getMyFriends();friendsSearch = ''"
-				class="my-friends right waves-effect waves-light btn">
-				<i class="material-icons left">people_outline</i>Show My Friends
+				class="my-friends right waves-effect waves-light btn btn-lg">
+				<i class="glyphicon glyphicon-user"></i> Show My Friends
 			</button>
 		</div>
 	</div>
 	<hr>
 	<div class="row">
-		<div class="col-sm-3" ng-repeat="friendContact in vm.contacts">
+		<div class="col-sm-3" ng-repeat="friendContact in vm.contacts | orderBy">
 			<div class="card user-card-{{friendContact.contact.id}}"
 				onmouseenter="showUserCardItems(this)"
 				onmouseleave="hideUserCardItems(this)">
