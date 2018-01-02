@@ -46,3 +46,13 @@
         3.Once took a feature into development make sure to update the trello ticket to doing status
         4.If done with ticket comment a developer to review the code (*once code review is one good to push the commit to origin repo)
 
+# Best Practices
+### Code Review
+        1.Someone need to check the unapproved commits and comment the respective changes in line
+        2.These commented changes need to be done or discussed before approving/ a new commit with these changes need to be done.
+        3.Indentation,optimization,coding standards need to be followed during these reviews.
+        4.Try to minimize code and reuse modules at every possible levels.
+        5.Prefer 
+        Bootstrap over css
+        ANGULARJS over Jquery/Js
+        FontAwesome over images
