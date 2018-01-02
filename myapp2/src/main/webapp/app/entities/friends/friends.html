@@ -13,67 +13,101 @@
 			<button ng-click="getMyFriends();friendsSearch = ''"
 				class="my-friends right waves-effect waves-light btn btn-lg">
 				<i class="glyphicon glyphicon-user"></i> Show My Friends
-			</button>
-		</div>
-	</div>
-	<hr>
-	<div class="row">
-		<div class="col-sm-3" ng-repeat="friendContact in vm.contacts | orderBy">
-			<div class="card user-card-{{friendContact.contact.id}}"
-				onmouseenter="showUserCardItems(this)"
-				onmouseleave="hideUserCardItems(this)">
-				<div class="card-title">
-					<div class="row">
-						<div class="col-sm-6 text-center">
-							<img class="rounded-circle float-left img-fluid"
-								src="content/images/hipster.png"
-								alt="content/images/hipster.png"
-								style="width: 80px; padding-left: 20px">
-						</div>
-						<div class="col-sm-6 text-center align-middle">
-							<h3 style="top: 33%; position: relative">{{friendContact.contact.firstName
-								+' '+ friendContact.contact.lastName | limitTo: 15
-								}}{{(friendContact.contact.firstName +
-								friendContact.contact.lastName).length > 15 ? '...' : ''}}</h3>
-						</div>
-					</div>
-				</div>
-				<div class="card-content text-center align-middle"
-					style="height: 90px; display: none; padding: 5px">
-					<div ng-if="friendContact.status == 'REQUEST_SENT'">
-						<button ng-click="cancelFriendRequest(friendContact)"
-							class="btn btn-outline-warning">Cancel Friend Request</button>
-						<br>
-						<button ng-click="viewProfileDialogue(friendContact)"
-							class="btn btn-outline-info">View Pofile</button>
-					</div>
-					<div ng-if="friendContact.status === 'ACCEPT_REQUEST'">
-						<button ng-click="acceptFriendRequest(friendContact)"
-							class="btn btn-outline-success">Accept Friend Request</button>
-						<br>
-						<button ng-click="cancelFriendRequest(friendContact)"
-							class="btn btn-outline-warning">Reject Friend Request</button>
-						<br>
-						<button ng-click="viewProfileDialogue(friendContact)"
-							class="btn btn-outline-info">View Pofile</button>
-					</div>
-					<div ng-if="friendContact.status === 'FRIEND'">
-						<button ng-click="cancelFriendRequest(friendContact)"
-							class="btn btn-outline-danger">UnFriend</button>
-						<br>
-						<button ng-click="viewProfileDialogue(friendContact)"
-							class="btn btn-outline-info">View Pofile</button>
-					</div>
-					<div ng-if="!friendContact.status">
-						<button ng-click="sendFriendRequest(friendContact)"
-							class="btn btn-outline-primary">Send Friend Request</button>
-						<br>
-						<button ng-click="viewProfileDialogue(friendContact)"
-							class="btn btn-outline-info">View Pofile</button>
-					</div>
-				</div>
-
-			</div>
+						</button>
 		</div>
 	</div>
 </div>
+<hr>
+<div class="row">
+	<div class="col-sm-3" ng-repeat="friendContact in vm.contacts">
+		<div class="card user-card user-card-{{friendContact.contact.id}}">
+			<div class="card-content">
+				<div class="row">
+					<div class="col-sm-5">
+						<img class="rounded-circle"
+							style="width: 80px; padding-left: 20px"
+							src="content/images/hipster.png" alt="content/images/hipster.png">
+					</div>
+					<div class="col-sm-7 text-center align-middle">
+						<div ng-if="friendContact.status == 'REQUEST_SENT'">
+							<button ng-click="cancelFriendRequest(friendContact)"
+								class="btn btn-outline-warning">Cancel Friend Request</button>
+							<br>
+						</div>
+						<div ng-if="friendContact.status === 'ACCEPT_REQUEST'">
+							<button ng-click="acceptFriendRequest(friendContact)"
+								class="btn btn-outline-primary">Accept Friend Request</button>
+							<br>
+							<button ng-click="cancelFriendRequest(friendContact)"
+								class="btn btn-outline-warning">Reject Friend Request</button>
+							<br>
+						</div>
+						<div ng-if="friendContact.status === 'FRIEND'">
+							<button ng-click="cancelFriendRequest(friendContact)"
+								class="btn btn-outline-danger">UnFriend</button>
+							<br>
+						</div>
+						<div ng-if="!friendContact.status">
+							<button ng-click="sendFriendRequest(friendContact)"
+								class="btn btn-outline-primary">Send Friend Request</button>
+							<br>
+						</div>
+						<div>
+							<button class="btn btn-outline-info" data-toggle="modal"
+								data-target=".view-profile-{{friendContact.contact.id}}">View
+								Profile</button>
+							<div class="modal fade view-profile-{{friendContact.contact.id}}"
+								tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+								aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header text-center">
+											<h4>
+												About <strong>{{friendContact.contact.firstName +'
+													'+ friendContact.contact.lastName}}</strong>
+											</h4>
+										</div>
+										<div class="modal-body">
+											<img src="content/images/hipster.png"
+												alt="content/images/hipster.png" name="aboutme" width="140"
+												height="140" border="0" class="img-circle">
+											<table class="table table-hover">
+
+												<tbody>
+													<tr>
+														<td><strong>FirstName</strong></td>
+														<td>{{friendContact.contact.firstName}}</td>
+													</tr>
+													<tr>
+														<td><strong>LastName</strong></td>
+														<td>{{friendContact.contact.lastName}}</td>
+													</tr>
+													<tr>
+														<td><strong>Status</strong></td>
+														<td><span ng-if="friendContact.contact.activated"
+															class="btn btn-success">Active</span><span
+															ng-if="!friendContact.contact.activated"
+															class="btn btn-danger">InActive</span></td>
+													</tr>
+												</tbody>
+											</table>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-outline-danger"
+													data-dismiss="modal">Close</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<span></span><h3><span class="col s12">{{friendContact.contact.firstName
+							+' '+ friendContact.contact.lastName | limitTo: 25
+							}}{{(friendContact.contact.firstName +
+							friendContact.contact.lastName).length >= 25 ? '...' : ''}}</span></h3>
+				</div>
+			</div>
+		</div>
+	</div>

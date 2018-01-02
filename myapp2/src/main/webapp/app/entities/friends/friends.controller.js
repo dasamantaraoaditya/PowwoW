@@ -74,17 +74,3 @@
 
 	}
 })();
-
-function showUserCardItems(item) {
-	$("." + item.className.split(' ').join('.') + " div.card-content").show(
-			"slow")
-	$("." + item.className.split(' ').join('.') + " div.card-title").hide(
-			"slow")
-}
-
-function hideUserCardItems(item) {
-	$("." + item.className.split(' ').join('.') + " div.card-content").hide(
-			"slow")
-	$("." + item.className.split(' ').join('.') + " div.card-title").show(
-			"slow")
-}

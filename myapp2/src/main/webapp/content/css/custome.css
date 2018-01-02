@@ -4,6 +4,14 @@
 	margin:2px;
 }
 
+div.card.user-card div.card-content {
+	padding: 5px;	
+}
+
+div.card.user-card div.card-content button{
+	margin: 2px;
+}
+
 body {
 	font-size: 13px !important;
 }
