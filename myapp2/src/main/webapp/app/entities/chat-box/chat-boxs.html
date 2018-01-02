@@ -1,19 +1,20 @@
 <div>
 	<div class="row">
 		<div class="col-sm-3">
-			<div class="searchBar input-group" style="padding-bottom:10px">
-			<span class="input-group-addon" style="padding-right:20px">
-			<i class="glyphicon glyphicon-search"></i>
-			</span>
-			<input type="text" class="form-control"
-					ng-model="contactSearch" placeholder="Search or start new chat"></div>
+			<div class="searchBar input-group" style="padding-bottom: 10px">
+				<span class="input-group-addon" style="padding-right: 20px">
+					<i class="glyphicon glyphicon-search"></i>
+				</span> <input type="text" class="form-control" ng-model="contactSearch"
+					placeholder="Search or start new chat">
+			</div>
 			<ul class="list-group">
 				<li class="list-group-item"
 					ng-repeat="friendContact in vm.chatBox | filter:{contact:{firstName:contactSearch}}"
 					ng-click="getMessages(friendContact.contact.id); vm.contactName = friendContact.contact.firstName +' '+ friendContact.contact.lastName"
 					title="{{friendContact.contact.firstName + friendContact.contact.lastName}}"><div>
-						<img src="content/images/ProfilePic.jpg" style="width:20px; height:20px; border-radius: 10px" /> <span
-							class="secondary-content" style="padding-left:12px">
+						<img src="content/images/ProfilePic.jpg"
+							style="width: 20px; height: 20px; border-radius: 10px" /> <span
+							class="secondary-content" style="padding-left: 12px">
 							{{friendContact.contact.firstName +' '+
 							friendContact.contact.lastName | limitTo: 15
 							}}{{(friendContact.contact.firstName +
@@ -24,35 +25,38 @@
 		<div class="col-sm-9 message-box">
 			<ul class="list-group">
 				<li class="list-group-item" ng-if="vm.contactName"><h5>
-						<img src="content/images/ProfilePic.jpg" style="width:20px; height:20px; border-radius: 10px" /> {{vm.contactName}}
+						<img src="content/images/ProfilePic.jpg"
+							style="width: 20px; height: 20px; border-radius: 10px" />
+						{{vm.contactName}}
 					</h5></li>
-				<li class="list-group-item"
-					ng-repeat="message in vm.messages track by message.id">
+				<li class="list-group-item rounded d-flex" style="width: fit-content"
+					ng-repeat="message in vm.messages track by message.id"
+					ng-class="message.sent_from.id != vm.contactId ? 'align-self-end' : 'align-self-start'">
 					<div title="{{message.sent_on | date:'MMM h:mm a'}}">
 						<div
-							ng-class="{'right-align': message.sent_from.id != vm.contactId}">{{message.message}}</div>
-						<div
-							ng-class="{'right-align': message.sent_from.id != vm.contactId}">
+							ng-class="message.sent_from.id != vm.contactId ? 'float-right' : 'float-left'">
 							<i
-								ng-class="{'fa fa-check-circle': message.is_read == true, 'fa fa-check-circle-o': message.is_read == false}"
+								ng-class="{'fa fa-eye': message.is_read == true, 'fa fa-eye-slash': message.is_read == false}"
 								aria-hidden="true"></i>
 						</div>
+						<div
+							ng-class="message.sent_from.id != vm.contactId ? 'float-right' : 'float-left'">{{message.message}}</div>
 					</div>
 				</li>
 			</ul>
-			<div class="row" style="padding-top:10px" ng-show=showTextArea>
+			<div class="row" style="padding-top: 10px" ng-show=showTextArea>
 				<div class="col-sm-10">
-					<input placeholder="Start typing your message here" ng-model="vm.messageToBeSent"
+					<input placeholder="Start typing your message here"
+						ng-model="vm.messageToBeSent"
 						class="form-control ng-pristine ng-valid ng-not-empty ng-valid-required"
 						ng-keypress="sendMessage($event)" length="20">
 				</div>
 				<div class="col-sm-2">
 					<button ng-click="sendMessage($event)" class="btn btn-lg">
-						 <span class="glyphicon glyphicon-send"></span> Send
+						<span class="glyphicon glyphicon-send"></span> Send
 					</button>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
- 
