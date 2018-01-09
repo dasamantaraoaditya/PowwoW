@@ -32,58 +32,54 @@
 					<label for="inputHorizontalSuccess" class="col-sm-3 col-form-label">UserName</label>
 					<input type="text" class="form-control col-sm-9" id="login"
 						name="login" placeholder="Your username"
-						ng-model="vm.registerAccount.login" ng-minlength=1 ng-maxlength=50
-						ng-pattern="/^[_'.@A-Za-z0-9-]*$/" required>
+						ng-model="vm.registerAccount.login" ng-minlength=6 ng-maxlength=25
+						ng-pattern="/^[A-Za-z0-9]*$/" required>
 					<div ng-show="form.login.$dirty && form.login.$invalid">
 						<p class="help-block" ng-show="form.login.$error.required">
 							Your username is required.</p>
 						<p class="help-block" ng-show="form.login.$error.minlength">
-							Your username is required to be at least 1 character.</p>
+							Your username is required to be at least 6 character.</p>
 						<p class="help-block" ng-show="form.login.$error.maxlength">
-							Your username cannot be longer than 50 characters.</p>
+							Your username cannot be longer than 25 characters.</p>
 						<p class="help-block" ng-show="form.login.$error.pattern">
-							Your username can only contain lower-case letters and digits.</p>
+							Your username can only contain Alphabets and Digits.</p>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="inputHorizontalSuccess" class="col-sm-3 col-form-label">First
 						Name</label> <input type="text" class="form-control col-sm-9"
 						id="firstname" name="firstname" placeholder="Your FirstName"
-						ng-model="vm.registerAccount.firstName" ng-minlength=1
-						ng-maxlength=50 ng-pattern="/^[_'.@A-Za-z0-9-]*$/" required>
+						ng-model="vm.registerAccount.firstName" ng-maxlength=50
+						ng-pattern="/^[A-Za-z0-9]*$/" required>
 					<div ng-show="form.firstname.$dirty && form.firstname.$invalid">
 						<p class="help-block" ng-show="form.firstname.$error.required">
 							Your FirstName is required.</p>
-						<p class="help-block" ng-show="form.firstname.$error.minlength">
-							Your FirstName is required to be at least 1 character.</p>
 						<p class="help-block" ng-show="form.firstname.$error.maxlength">
 							Your FirstName cannot be longer than 50 characters.</p>
 						<p class="help-block" ng-show="form.firstname.$error.pattern">
-							Your FirstName can only contain lower-case letters and digits.</p>
+							Your FirstName can only contain Alphabets and digits.</p>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="control-label col-sm-3" for="lastname">Last
 						Name</label> <input type="text" class="form-control col-sm-9"
 						id="lastname" name="lastname" placeholder="Your LastName"
-						ng-model="vm.registerAccount.lastName" ng-minlength=1
-						ng-maxlength=50 ng-pattern="/^[_'.@A-Za-z0-9-]*$/" required>
+						ng-model="vm.registerAccount.lastName" ng-maxlength=50
+						ng-pattern="/^[A-Za-z0-9]*$/" required>
 					<div ng-show="form.lastname.$dirty && form.lastname.$invalid">
 						<p class="help-block" ng-show="form.lastname.$error.required">
 							Your LastName is required.</p>
-						<p class="help-block" ng-show="form.lastname.$error.minlength">
-							Your LastName is required to be at least 1 character.</p>
 						<p class="help-block" ng-show="form.lastname.$error.maxlength">
 							Your LastName cannot be longer than 50 characters.</p>
 						<p class="help-block" ng-show="form.lastname.$error.pattern">
-							Your LastName can only contain lower-case letters and digits.</p>
+							Your LastName can only contain Alphabets and digits.</p>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="control-label col-sm-3" for="email">Email</label> <input
 						type="email" class="form-control col-sm-9" id="email" name="email"
 						placeholder="Your email" ng-model="vm.registerAccount.email"
-						ng-minlength=5 ng-maxlength=100 required>
+						ng-minlength=5 ng-maxlength=50 required>
 					<div ng-show="form.email.$dirty && form.email.$invalid">
 						<p class="help-block" ng-show="form.email.$error.required">
 							Your email is required.</p>
@@ -92,22 +88,22 @@
 						<p class="help-block" ng-show="form.email.$error.minlength">
 							Your email is required to be at least 5 characters.</p>
 						<p class="help-block" ng-show="form.email.$error.maxlength">
-							Your email cannot be longer than 100 characters.</p>
+							Your email cannot be longer than 50 characters.</p>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="control-label col-sm-4" for="password">password</label>
 					<input type="password" class="form-control col-sm-8" id="password"
 						name="password" placeholder="New password"
-						ng-model="vm.registerAccount.password" ng-minlength=4
-						ng-maxlength=50 required>
+						ng-model="vm.registerAccount.password" ng-minlength=6
+						ng-maxlength=25 required>
 					<div ng-show="form.password.$dirty && form.password.$invalid">
 						<p class="help-block" ng-show="form.password.$error.required">
 							Your password is required.</p>
 						<p class="help-block" ng-show="form.password.$error.minlength">
-							Your password is required to be at least 4 characters.</p>
+							Your password is required to be at least 6 characters.</p>
 						<p class="help-block" ng-show="form.password.$error.maxlength">
-							Your password cannot be longer than 50 characters.</p>
+							Your password cannot be longer than 25 characters.</p>
 					</div>
 				</div>
 				<div class="form-group row">
@@ -115,7 +111,7 @@
 						password confirmation</label> <input type="password"
 						class="form-control col-sm-8" id="confirmPassword"
 						name="confirmPassword" placeholder="Confirm the new password"
-						ng-model="vm.confirmPassword" ng-minlength=4 ng-maxlength=50
+						ng-model="vm.confirmPassword" ng-minlength=6 ng-maxlength=25
 						required>
 					<div
 						ng-show="form.confirmPassword.$dirty && form.confirmPassword.$invalid">
@@ -124,15 +120,17 @@
 							confirmation password is required.</p>
 						<p class="help-block"
 							ng-show="form.confirmPassword.$error.minlength">Your
-							confirmation password is required to be at least 4 characters.</p>
+							confirmation password is required to be at least 6 characters.</p>
 						<p class="help-block"
 							ng-show="form.confirmPassword.$error.maxlength">Your
-							confirmation password cannot be longer than 50 characters.</p>
+							confirmation password cannot be longer than 25 characters.</p>
 					</div>
 				</div>
 
 				<button type="submit" ng-disabled="form.$invalid"
-					class="btn btn-outline-primary btn-lg">Register <i class="fa fa-sign-in" aria-hidden="true"></i></button>
+					class="btn btn-outline-primary btn-lg">
+					Register <i class="fa fa-sign-in" aria-hidden="true"></i>
+				</button>
 			</form>
 			<p></p>
 
@@ -143,10 +141,7 @@
 			<jh-social ng-provider="facebook"></jh-social>
 			<jh-social ng-provider="twitter"></jh-social>
 			<!-- jhipster-needle-add-social-button -->
-			<br>
-			<br>
-			<br>
-			<br>
+			<br> <br> <br> <br>
 			<password-strength-bar
 				password-to-check="vm.registerAccount.password"></password-strength-bar>
 		</div>
