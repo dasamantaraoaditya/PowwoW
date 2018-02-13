@@ -1,0 +1,70 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "userid",
+            "otherEntityName": "user",
+            "relationshipType": "one-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "userprofile"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "profilepicture",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "about",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nicname",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dateofbirth",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "address",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "contactno",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "facebooklink",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "googlepluslink",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "linkedinlink",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "twitterlink",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "instagramlink",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180213185503",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "userprofile",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

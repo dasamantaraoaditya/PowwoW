@@ -1,0 +1,80 @@
+<div>
+    <h2>Userprofiles</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="userprofile.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Userprofile
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Profilepicture</span></th>
+                    <th><span>About</span></th>
+                    <th><span>Nicname</span></th>
+                    <th><span>Dateofbirth</span></th>
+                    <th><span>Address</span></th>
+                    <th><span>Contactno</span></th>
+                    <th><span>Facebooklink</span></th>
+                    <th><span>Googlepluslink</span></th>
+                    <th><span>Linkedinlink</span></th>
+                    <th><span>Twitterlink</span></th>
+                    <th><span>Instagramlink</span></th>
+                    <th><span>Userid</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="userprofile in vm.userprofiles track by userprofile.id">
+                    <td><a ui-sref="userprofile-detail({id:userprofile.id})">{{userprofile.id}}</a></td>
+                    <td>{{userprofile.profilepicture}}</td>
+                    <td>{{userprofile.about}}</td>
+                    <td>{{userprofile.nicname}}</td>
+                        <td>{{userprofile.dateofbirth | date:'mediumDate'}}</td>
+                    <td>{{userprofile.address}}</td>
+                    <td>{{userprofile.contactno}}</td>
+                    <td>{{userprofile.facebooklink}}</td>
+                    <td>{{userprofile.googlepluslink}}</td>
+                    <td>{{userprofile.linkedinlink}}</td>
+                    <td>{{userprofile.twitterlink}}</td>
+                    <td>{{userprofile.instagramlink}}</td>
+                    <td>
+                        {{userprofile.userid.login}}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="userprofile-detail({id:userprofile.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="userprofile.edit({id:userprofile.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="userprofile.delete({id:userprofile.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

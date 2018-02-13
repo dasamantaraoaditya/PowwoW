@@ -1,0 +1,67 @@
+
+<div>
+    <h2><span>Userprofile</span> {{vm.userprofile.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Profilepicture</span></dt>
+        <dd>
+            <span>{{vm.userprofile.profilepicture}}</span>
+        </dd>
+        <dt><span>About</span></dt>
+        <dd>
+            <span>{{vm.userprofile.about}}</span>
+        </dd>
+        <dt><span>Nicname</span></dt>
+        <dd>
+            <span>{{vm.userprofile.nicname}}</span>
+        </dd>
+        <dt><span>Dateofbirth</span></dt>
+        <dd>
+            <span>{{vm.userprofile.dateofbirth | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Address</span></dt>
+        <dd>
+            <span>{{vm.userprofile.address}}</span>
+        </dd>
+        <dt><span>Contactno</span></dt>
+        <dd>
+            <span>{{vm.userprofile.contactno}}</span>
+        </dd>
+        <dt><span>Facebooklink</span></dt>
+        <dd>
+            <span>{{vm.userprofile.facebooklink}}</span>
+        </dd>
+        <dt><span>Googlepluslink</span></dt>
+        <dd>
+            <span>{{vm.userprofile.googlepluslink}}</span>
+        </dd>
+        <dt><span>Linkedinlink</span></dt>
+        <dd>
+            <span>{{vm.userprofile.linkedinlink}}</span>
+        </dd>
+        <dt><span>Twitterlink</span></dt>
+        <dd>
+            <span>{{vm.userprofile.twitterlink}}</span>
+        </dd>
+        <dt><span>Instagramlink</span></dt>
+        <dd>
+            <span>{{vm.userprofile.instagramlink}}</span>
+        </dd>
+        <dt><span>Userid</span></dt>
+        <dd>
+            {{vm.userprofile.userid.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="userprofile-detail.edit({id:vm.userprofile.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

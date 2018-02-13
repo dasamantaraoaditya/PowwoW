@@ -1,0 +1,107 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myUserprofileLabel">Create or edit a Userprofile</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.userprofile.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.userprofile.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_profilepicture">Profilepicture</label>
+            <input type="text" class="form-control" name="profilepicture" id="field_profilepicture"
+                    ng-model="vm.userprofile.profilepicture"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_about">About</label>
+            <input type="text" class="form-control" name="about" id="field_about"
+                    ng-model="vm.userprofile.about"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_nicname">Nicname</label>
+            <input type="text" class="form-control" name="nicname" id="field_nicname"
+                    ng-model="vm.userprofile.nicname"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_dateofbirth">Dateofbirth</label>
+                <div class="input-group">
+                    <input id="field_dateofbirth" type="text" class="form-control" name="dateofbirth" uib-datepicker-popup="{{dateformat}}" ng-model="vm.userprofile.dateofbirth" is-open="vm.datePickerOpenStatus.dateofbirth"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateofbirth')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_address">Address</label>
+            <input type="text" class="form-control" name="address" id="field_address"
+                    ng-model="vm.userprofile.address"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_contactno">Contactno</label>
+            <input type="text" class="form-control" name="contactno" id="field_contactno"
+                    ng-model="vm.userprofile.contactno"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_facebooklink">Facebooklink</label>
+            <input type="text" class="form-control" name="facebooklink" id="field_facebooklink"
+                    ng-model="vm.userprofile.facebooklink"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_googlepluslink">Googlepluslink</label>
+            <input type="text" class="form-control" name="googlepluslink" id="field_googlepluslink"
+                    ng-model="vm.userprofile.googlepluslink"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_linkedinlink">Linkedinlink</label>
+            <input type="text" class="form-control" name="linkedinlink" id="field_linkedinlink"
+                    ng-model="vm.userprofile.linkedinlink"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_twitterlink">Twitterlink</label>
+            <input type="text" class="form-control" name="twitterlink" id="field_twitterlink"
+                    ng-model="vm.userprofile.twitterlink"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_instagramlink">Instagramlink</label>
+            <input type="text" class="form-control" name="instagramlink" id="field_instagramlink"
+                    ng-model="vm.userprofile.instagramlink"
+                    />
+        </div>
+
+        <div class="form-group">
+            <label for="field_userid">Userid</label>
+            <select class="form-control" id="field_userid" name="userid" ng-model="vm.userprofile.userid" ng-options="user as user.login for user in vm.users track by user.id" required>
+            </select>
+        </div>
+        <div ng-show="editForm.userid.$invalid">
+            <p class="help-block"
+                ng-show="editForm.userid.$error.required">
+                This field is required.
+            </p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>
