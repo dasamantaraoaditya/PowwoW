@@ -80,6 +80,7 @@ public class FriendsResource {
 		User currentUser = usersRepository.findByCurrentLoggedIn();
 		List<User> users = usersRepository.findByFirstNameOrLastName(aSearchText);
 		users.remove(currentUser);
+		users = users.stream().filter(user->!(user.getLogin().equals("admin") || user.getLogin().equals("anonymoususer") || user.getLogin().equals("system"))).collect(Collectors.toList());
 		List<User> uniqueUsers = users
 				.stream().filter(user -> (contacts.stream()
 						.filter(contact -> contact.getContact().getId().equals(user.getId())).count()) < 1)
