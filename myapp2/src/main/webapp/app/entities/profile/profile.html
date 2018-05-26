@@ -1,0 +1,68 @@
+<div>
+	<jhi-alert></jhi-alert>
+</div>
+<div class="row">
+	<div class="col-md-3 profile-left">
+		<div class="row"><img src="vm.profilepicture" alt="No Profile Pic Found"></div>
+	</div>
+	<div class="col-md-9 profile-right">
+		<div class="row">
+			<table class="table table-hover">
+				<tr>
+					<td><b>User Name</b></td>
+					<td>{{vm.userid.login}}</td>
+				</tr>
+				<tr>
+					<td><b>About</b></td>
+					<td>{{vm.about}}</td>
+				</tr>
+				<tr>
+					<td><b>Nic Name</b></td>
+					<td>{{vm.nicname}}</td>
+				</tr>
+				<tr>
+					<td><b>Date Of Birth</b></td>
+					<td>{{vm.dateofbirth}}</td>
+				</tr>
+				<tr>
+					<td><b>Address</b></td>
+					<td>{{vm.address}}</td>
+				</tr>
+				<tr>
+					<td><b>Contact Info</b></td>
+					<td>{{vm.contactno}}</td>
+				</tr>
+				<tr>
+					<td><b>Email Id</b></td>
+					<td>{{vm.userId.email}}</td>
+				</tr>
+			</table>
+		</div>
+			<div class="row">
+				<div class="list-group col-md-6">
+				    <a href="#" class="list-group-item disabled">Cras justo odio</a>
+				    <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+				    <a href="#" class="list-group-item">Morbi leo risus</a>
+				    <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+				    <a href="#" class="list-group-item">Vestibulum at eros</a>
+				</div>
+				<div class="col-md-6">
+				    <ul class="list-group">
+					    <li class="list-group-item d-flex justify-content-between align-items-center">
+					        Friends
+					        <span class="badge badge-primary badge-pill">{{vm.getCount()}}</span>
+					    </li>
+					    <li class="list-group-item d-flex justify-content-between align-items-center">
+					        Pending Friend Acceptance
+					        <span class="badge badge-primary badge-pill">{{vm.getPendingAcceptance()}}</span>
+					    </li>
+					    <li class="list-group-item d-flex justify-content-between align-items-center">
+					        Pending Friend request
+					        <span class="badge badge-primary badge-pill">{{vm.getPendingRequests()}}</span>
+					    </li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
