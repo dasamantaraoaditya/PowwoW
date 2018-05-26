@@ -38,7 +38,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Page<User> findAllByLoginNot(Pageable pageable, String login);
 
-    @Query("select users from User users where CONCAT(users.firstName ,' ', users.lastName) LIKE (:searchtext)")
+    @Query("select users from User users where users.firstName LIKE (:searchtext) OR users.lastName LIKE (:searchtext)")
 	List<User> findByFirstNameOrLastName(@Param("searchtext") String searchtext);
 
     @Query("select users from User users where users.login = ?#{principal.username}")

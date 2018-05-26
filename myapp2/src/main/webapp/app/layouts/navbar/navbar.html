@@ -74,13 +74,12 @@
 								ui-sref="password" ng-click="vm.collapseNavbar()"> <span
 									class="glyphicon glyphicon-lock"></span>&nbsp; <span>Password</span>
 							</a></li>
-							<li ui-sref-active="active"><a class="dropdown-item" href=""
+						</ul></li>
+						<li ui-sref-active="active" ng-switch-when="true"><a  href=""
 								ng-click="vm.logout()" id="logout"> <span
 									class="glyphicon glyphicon-log-out"></span>&nbsp; <span>Sign
 										out</span>
 							</a></li>
-							
-						</ul></li>
 					<li ng-class="{active: vm.$state.includes('admin')}"
 						ng-switch-when="true" has-authority="ROLE_ADMIN" uib-dropdown
 						class="dropdown pointer"><a class="dropdown-toggle"
