@@ -105,6 +105,20 @@ public class UserprofileResource {
     }
 
     /**
+     * GET  /userprofiles/user/:userId : get the "userProfile.User.Id" userprofile.
+     *
+     * @param userId the id of the user of which respective userProfile to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the userprofile, or with status 404 (Not Found)
+     */
+    @GetMapping("/userprofiles/user/{userId}")
+    @Timed
+    public ResponseEntity<Userprofile> getUserprofileOfUser(@PathVariable Long userId) {
+        log.debug("REST request to get Userprofile of user with userId {}", userId);
+        List<Userprofile> userprofile = userprofileRepository.findByUserId(userId);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(userprofile.get(0)));
+    }
+
+    /**
      * DELETE  /userprofiles/:id : delete the "id" userprofile.
      *
      * @param id the id of the userprofile to delete

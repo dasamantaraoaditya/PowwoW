@@ -8,9 +8,9 @@
 	angular.module('myapp2App').controller('ProfileController',
 			ProfileController);
 
-	ProfileController.$inject = [ 'Profile', '$scope', 'ChatRoom', 'Principal' ];
+	ProfileController.$inject = [ 'Profile', '$scope', 'Friends', 'Principal' ];
 
-	function ProfileController(Profile, $scope, ChatRoom, Principal) {
+	function ProfileController(Profile, $scope, Friends, Principal) {
 
 		var vm = this;
 		vm.Profile = [];
@@ -20,13 +20,12 @@
 			Principal.identity().then(function(account) {
 				vm.account = account;
 				vm.isAuthenticated = Principal.isAuthenticated;
+				getUserProfile();
 			});
 		}
 
-		loadAll();
-
-		function loadAll() {
-			Profile.query(function(result) {
+		function getUserProfile() {
+			Profile.getByUser({userId : vm.account.id},function(result) {
 				vm.Profile = result;
 				vm.searchQuery = null;
 			});

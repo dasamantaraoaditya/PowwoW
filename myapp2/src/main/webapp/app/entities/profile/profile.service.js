@@ -9,7 +9,7 @@
 	Profile.$inject = [ '$resource', 'DateUtils' ];
 
 	function Profile($resource, DateUtils) {
-		var resourceUrl = 'api/profile/:id';
+		var resourceUrl = 'api/userprofiles/:id';
 
 		return $resource(resourceUrl, {}, {
 			'query' : {
@@ -20,10 +20,11 @@
 				method : 'GET',
 				isArray : true
 			},
-			'sendMessage' : {
-				method : 'POST',
-				isArray : false
-			},
+			'getByUser':{
+            	method: 'GET',
+            	isArray : false,
+            	url: 'api/userprofiles/user/:userId'
+            },
 			'update' : {
 				method : 'PUT'
 			}

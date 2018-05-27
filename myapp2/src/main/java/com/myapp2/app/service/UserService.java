@@ -2,9 +2,11 @@ package com.myapp2.app.service;
 
 import com.myapp2.app.domain.Authority;
 import com.myapp2.app.domain.User;
+import com.myapp2.app.domain.Userprofile;
 import com.myapp2.app.repository.AuthorityRepository;
 import com.myapp2.app.config.Constants;
 import com.myapp2.app.repository.UserRepository;
+import com.myapp2.app.repository.UserprofileRepository;
 import com.myapp2.app.security.AuthoritiesConstants;
 import com.myapp2.app.security.SecurityUtils;
 import com.myapp2.app.service.util.RandomUtil;
@@ -47,12 +49,15 @@ public class UserService {
 
     private final CacheManager cacheManager;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, SocialService socialService, AuthorityRepository authorityRepository, CacheManager cacheManager) {
+	private final UserprofileRepository userProfileRepository;
+
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, SocialService socialService, AuthorityRepository authorityRepository, CacheManager cacheManager, UserprofileRepository userProfileRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.socialService = socialService;
         this.authorityRepository = authorityRepository;
         this.cacheManager = cacheManager;
+        this.userProfileRepository= userProfileRepository;
     }
 
     public Optional<User> activateRegistration(String key) {
@@ -114,9 +119,20 @@ public class UserService {
         authorities.add(authority);
         newUser.setAuthorities(authorities);
         userRepository.save(newUser);
+        initializeUserProfile(newUser);
         log.debug("Created Information for User: {}", newUser);
         return newUser;
     }
+
+	/**
+	 * 
+	 */
+	private void initializeUserProfile(User newUser) {
+		Userprofile userProfile = new Userprofile();
+		userProfile.setUserid(newUser);
+		userProfile.setProfilepicture("content/images/ProfilePic.jpg");
+		userProfileRepository.save(userProfile);
+	}
 
     public User createUser(UserDTO userDTO) {
         User user = new User();

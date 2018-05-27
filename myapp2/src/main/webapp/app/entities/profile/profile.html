@@ -3,48 +3,71 @@
 </div>
 <div class="row">
 	<div class="col-md-3 profile-left">
-		<div class="row"><img src="vm.profilepicture" alt="No Profile Pic Found"></div>
+		<div class="row"><img style="width:80%; height:80% "src="{{vm.Profile.profilepicture}}" class="mx-auto d-block" alt="No Profile Pic Found"></div>
 	</div>
 	<div class="col-md-9 profile-right">
 		<div class="row">
 			<table class="table table-hover">
 				<tr>
 					<td><b>User Name</b></td>
-					<td>{{vm.userid.login}}</td>
+					<td>{{vm.Profile.userid.login}}</td>
+				</tr>
+				<tr>
+					<td><b>First Name</b></td>
+					<td>{{vm.Profile.userid.firstName}}</td>
+				</tr>
+				<tr>
+					<td><b>Last Name</b></td>
+					<td>{{vm.Profile.userid.lastName}}</td>
 				</tr>
 				<tr>
 					<td><b>About</b></td>
-					<td>{{vm.about}}</td>
+					<td>{{vm.Profile.about}}</td>
 				</tr>
 				<tr>
 					<td><b>Nic Name</b></td>
-					<td>{{vm.nicname}}</td>
+					<td>{{vm.Profile.nicname}}</td>
 				</tr>
 				<tr>
 					<td><b>Date Of Birth</b></td>
-					<td>{{vm.dateofbirth}}</td>
+					<td>{{vm.Profile.dateofbirth}}</td>
 				</tr>
 				<tr>
 					<td><b>Address</b></td>
-					<td>{{vm.address}}</td>
+					<td>{{vm.Profile.address}}</td>
 				</tr>
 				<tr>
 					<td><b>Contact Info</b></td>
-					<td>{{vm.contactno}}</td>
+					<td>{{vm.Profile.contactno}}</td>
 				</tr>
 				<tr>
 					<td><b>Email Id</b></td>
-					<td>{{vm.userId.email}}</td>
+					<td>{{vm.Profile.userid.email}}</td>
 				</tr>
 			</table>
 		</div>
 			<div class="row">
 				<div class="list-group col-md-6">
-				    <a href="#" class="list-group-item disabled">Cras justo odio</a>
-				    <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-				    <a href="#" class="list-group-item">Morbi leo risus</a>
-				    <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-				    <a href="#" class="list-group-item">Vestibulum at eros</a>
+					<div class="list-group-item">
+				    	<span ng-if="vm.Profile.facebooklink"><a href="{{vm.Profile.facebooklink}}">FaceBook</a></span>
+				    	<span ng-if="!vm.Profile.facebooklink">No Facebook link provided</span>
+				    </div>
+				    <div class="list-group-item">
+				    	<span ng-if="vm.Profile.googlepluslink"><a href="{{vm.Profile.googlepluslink}}">Google Plus</a></span>
+				    	<span ng-if="!vm.Profile.googlepluslink">No Google Plus link provided</span>
+				    </div>
+				    <div class="list-group-item">
+				    	<span ng-if="vm.Profile.instagramlink"><a href="{{vm.Profile.instagramlink}}">Instagram</a></span>
+				    	<span ng-if="!vm.Profile.instagramlink">No Instagram link provided</span>
+				    </div>
+				    <div class="list-group-item">
+				    	<span ng-if="vm.Profile.linkedinlink"><a href="{{vm.Profile.linkedinlink}}">Linkedin</a></span>
+				    	<span ng-if="!vm.Profile.linkedinlink">No Linkedin link provided</span>
+				    </div>
+				    <div class="list-group-item">
+				    	<span ng-if="vm.Profile.twitterlink"><a href="{{vm.Profile.twitterlink}}">Twitter</a></span>
+				    	<span ng-if="!vm.Profile.twitterlink">No Twitter link provided</span>
+				    </div>
 				</div>
 				<div class="col-md-6">
 				    <ul class="list-group">
